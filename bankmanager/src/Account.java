@@ -1,3 +1,5 @@
+package bankmanager.src;
+
 public class Account {
 
     public String id;
