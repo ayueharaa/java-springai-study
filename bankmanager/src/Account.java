@@ -31,6 +31,20 @@ public class Account {
             }
     };
 
+    public void removeBalance(double amount) {
+        if(this.balance - amount >=0){
+            this.balance -= amount;
+        } else {
+            if(this.balance + this.limitSpecialChecking - (amount*0.2) >= 0){
+                this.limitSpecialChecking -= ((amount*0.2) - this.balance);
+                this.balance = 0;
+                System.out.println("You are using the special checking limit. Remaining limit: " + this.limitSpecialChecking);
+            } else {
+                System.out.println("Insufficient funds.");
+            }
+        }
+    };
+
     public void setLimitSpecialChecking(double limitSpecialChecking) {
         this.limitSpecialChecking = limitSpecialChecking;
     };

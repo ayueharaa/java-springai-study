@@ -18,16 +18,19 @@ public class Main {
     }
 
     public void menu (Scanner sc, Car car) {
-        while(true) {
+            System.out.println("CURRENT CAR STATUS:");
+            System.out.println("Is Running: " + car.isRunning);
+            System.out.println("Speed: " + car.speed);
+            System.out.println("Gear: " + car.gear);
+            System.out.println("-----------------------");
             System.out.println("1. Toggle Car On/Off");
             System.out.println("2. Increase Speed");
             System.out.println("3. Decrease Speed");
             System.out.println("4. Change Direction");
             System.out.println("5. Get Speed");
-            System.out.println("6. Exit");
 
             int choice = sc.nextInt();
-
+            
             switch(choice) {
                 case 1:
                     toggleIsRunning(car);
@@ -50,23 +53,19 @@ public class Main {
                 case 5:
                     getSpeed(car);
                     break;
-                case 6:
-                    System.out.println("Exiting...");
-                    return;
                 default:
                     System.out.println("Invalid choice. Please try again.");
             }
             replayMenu(sc, car);
-        }
     }
 
     public void replayMenu(Scanner sc, Car car) {
-        System.out.println("Do you want to replay the menu? (yes/no)");
+        System.out.println("Do you want to replay the menu? (Y/N)");
         String replayChoice = sc.next();
-        if(replayChoice.equalsIgnoreCase("yes")) {
+        if(replayChoice.equalsIgnoreCase("Y")) {
             menu(sc, car);
         } else {
-            System.out.println("Goodbye!");
+            System.out.println("Thank you for using our services!");
         }
     }
 

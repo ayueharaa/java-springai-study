@@ -28,20 +28,28 @@ public class Car {
     }
 
     public void increaseSpeed(int increment) {
-        if(this.speed +increment > 120) {
-            this.speed = 120;
-        } else if (this.speed + increment < 0) {
-            this.speed = 0;
+        if(Math.abs(increment) > 20) {
+            System.out.println("Cannot change speed by more than 20 units at a time due to gear change.");
+            return;
         } else {
-            this.speed += increment;
+            if(this.speed + increment < 0) {
+                this.speed = 0;
+                System.out.println("Cannot decrease speed below 0.");
+                changeGear();
+            } else if (this.speed + increment >=120) {
+                this.speed = 120;
+                changeGear();
+            }else {
+                this.speed += increment;
+                changeGear();
+            }
         }
-        changeGear();
     }
 
     public void changeGear() {
         int newGear;
 
-        if(this.speed >= 0 && this.speed <= 20) {
+        if(this.speed > 0 && this.speed <= 20) {
             newGear = 1;
         } else if(this.speed > 20 && this.speed <= 40) {
             newGear = 2;

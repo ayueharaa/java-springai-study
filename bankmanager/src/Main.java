@@ -87,22 +87,11 @@ public class Main {
     }
 
     public static void withdraw (Account account, double amount) {
-        if (account.getBalance() >= amount) {
-            account.setBalance(account.getBalance() - amount);
-        } else {
-            System.out.println("Your'e using your special checking limit");
-            Double availableAmount = amount - account.getBalance();
-            account.setBalance(0);
-            account.setLimitSpecialChecking(account.getLimitSpecialChecking() - availableAmount*0.2);
-        }
+        account.removeBalance(amount);
     }
 
     public static void payment (Account account, double amount) {
-        if (account.getBalance() + account.getLimitSpecialChecking() >= amount) {
-            account.setBalance(account.getBalance() - amount);
-        } else {
-            System.out.println("Insufficient funds");
-        }
+        account.removeBalance(amount);
     }
 
 }
